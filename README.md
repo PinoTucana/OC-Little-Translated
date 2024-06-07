@@ -38,9 +38,9 @@
 * [**Quirks**](https://github.com/5T33Z0/OC-Little-Translated/tree/main/08_Quirks)
 / **怪癖**
 * [**Board-ID Skip and VMM Spoof**](https://github.com/5T33Z0/OC-Little-Translated/tree/main/09_Board-ID_VMM-Spoof)
-/ **跳过板载标识以及 VMM 欺骗**
+/ **跳过 Board-ID 以及 VMM 欺骗**
 * [**Kext Loading Sequence Examples**](https://github.com/5T33Z0/OC-Little-Translated/tree/main/10_Kexts_Loading_Sequence_Examples#readme)
-/ **内核扩展加载顺序示例**
+/ **Kext 加载顺序示例**
 * [**Graphics**](https://github.com/5T33Z0/OC-Little-Translated/tree/main/11_Graphics) (integrated/discrete)
 / **图形显示（集成/独立）**
 * [**MMIO Whitelist**](https://github.com/5T33Z0/OC-Little-Translated/tree/main/12_MMIO_Whitelist)
