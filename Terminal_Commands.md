@@ -370,8 +370,7 @@ sudo defaults delete /Library/Preferences/com.apple.CoreDisplay useMetal
 sudo defaults delete /Library/Preferences/com.apple.CoreDisplay useIOP
 ```
 [**Source**](https://github.com/lvs1974/NvidiaGraphicsFixup/releases)
-
-[**来源**](https://github.com/lvs1974/NvidiaGraphicsFixup/releases)
+/ **来源**
 
 ### Prohibit macOS from mastering iDevices
 ### 禁止 macOS 掌控 iDevices
@@ -383,8 +382,7 @@ defaults write com.apple.AMPDeviceDiscoveryAgent reveal-devices 0
 defaults write -g ignore-devices -bool true
 ```
 **Source**: [**Apple-Knowledge**](https://github.com/hack-different/apple-knowledge/blob/main/_docs/USB_Modes.md)
-
-**来源**: [**Apple-Knowledge**](https://github.com/hack-different/apple-knowledge/blob/main/_docs/USB_Modes.md)
+/ **来源**
 
 ### Change default state of Bluetooth (on/off)
 ### 更改蓝牙的默认状态（开/关）
@@ -655,8 +653,7 @@ ___
 ### 键盘快捷键集
 
 [**Mac Keyboard Shortcuts**](https://support.apple.com/en-us/HT201236)
-
-[**Mac 键盘快捷键**](https://support.apple.com/en-us/HT201236)
+/ **Mac 键盘快捷键**
 
 ### Show hidden Files and Folders in Finder
 ### 在 Finder 中显示隐藏文件和文件夹
