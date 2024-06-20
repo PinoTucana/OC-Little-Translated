@@ -1,7 +1,7 @@
 # OC-Little: ACPI Hotpatch Samples and Guides for OpenCore
 # OC-Little： 适用于 OpenCore 的 ACPI 热补丁示例和指南
 
-[![OpenCore Version](https://img.shields.io/badge/Supported_OpenCore_Version:-≤1.0.0-success.svg)](https://github.com/acidanthera/OpenCorePkg) ![macOS](https://img.shields.io/badge/Supported_macOS:-≤14.5b-white.svg) ![Last Update](https://img.shields.io/badge/Last_Update_(yy/mm/dd):-24.05.06-blueviolet.svg)</br>![maciasl](https://user-images.githubusercontent.com/76865553/179583184-5efe6546-9f3a-4899-bdc1-5e9ec5a2927e.png)
+[![OpenCore Version](https://img.shields.io/badge/Supported_OpenCore_Version:-≤1.0.0-success.svg)](https://github.com/acidanthera/OpenCorePkg) ![macOS](https://img.shields.io/badge/Supported_macOS:-≤15.0-white.svg) ![Last Update](https://img.shields.io/badge/Last_Update_(yy/mm/dd):-24.06.16-blueviolet.svg)</br>![maciasl](https://user-images.githubusercontent.com/76865553/179583184-5efe6546-9f3a-4899-bdc1-5e9ec5a2927e.png)
 
 ## TABLE of CONTENTS
 ## 目录

@@ -1,7 +1,7 @@
 # Installing newer versions of macOS on legacy hardware
 
 ## About
-Although you can use OpenCore and [**OpenCore Legacy Patcher**](https://github.com/dortania/OpenCore-Legacy-Patcher) (OCLP) to install newer versions of macOS on Wintel systems with CPUs that were dropped from macOS 12 and newer (everything prior to Kaby Lake), it's not officially supported by Dortania nor is it documented, nor will you get any help for doing so on discord. That's why I created this section.
+Although you can use OpenCore and [**OpenCore Legacy Patcher**](https://github.com/dortania/OpenCore-Legacy-Patcher) (OCLP) to install newer versions of macOS on Wintel systems (aka Windows PCs and Laptops) with CPUs that were dropped from macOS 12 and newer (everything prior to Kaby Lake), it's not officially supported by Dortania nor is it documented, nor will you get any help for doing so on discord. That's why I created this section.
 
 Officially, OCLP only supports end of life (or "legacy") Macs by Apple. But you can run OLCP on Wintel systems as well to re-install drivers and frameworks which were removed from macOS 12 and newer (check [this repo](https://github.com/dortania/PatcherSupportPkg) for references). This includes:
 
@@ -32,7 +32,20 @@ Based on analyzing EFI folders and configs that OCLP generates for Macs of 1st t
 ## Troubleshooting
 - [**Recovering from failed root patching attempts**](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Reverting_Root_Patches.md)
 
+## Fetching macOS Installers
+
+There are several options to fetch and download macOS Installers directly from Apple. Here are some of them:
+
+1. **OpenCore Legacy Patcher**. It has the options to download macOS and create a USB Installer right build in
+2. [**MIST**](https://github.com/ninxsoft/Mist): Gui based app to download macOS Installers and Firmwares
+3. **Terminal**. Open Terminal and enter the following commands:<br>
+	`softwareupdate  --fetch-full-installer --list-full-installers` (to fetch the list of Installers)
+	`softwareupdate  --fetch-full-installer --list-full-installer-version xx.xx` (replace xx.xx by the version you want to download)
+
+Foe more options, check the [**Utilities**](https://github.com/5T33Z0/OC-Little-Translated/tree/main/C_Utilities_and_Resources#getting-macos) section
+ 
 ## Other
+- [**macOS Sequoia Notes**](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Sequoia_Notes.md)
 - [**macOS Sonoma Notes**](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Sonoma_Notes.md)
 - [**Fetching kext updates from OCLP with OCAT**](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Fetching_OCLP_Kexts.md)
 - [**Installing Windows from within macOS without Bootcamp**](https://github.com/5T33Z0/OC-Little-Translated/blob/main/I_Windows/Install_Windows_NoBootcamp.md)
