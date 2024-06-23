@@ -8,7 +8,7 @@ Plug and Play ID | Description
 `PNP0C09`| **Embedded Controller Device**. A host embedded controller controlled through an ACPI-aware driver.
 `PNP0C0A` | **Control Method Battery**. A device that solely implements the ACPI Control Method Battery functions. A device that has some other primary function would use its normal device ID. This ID is used when the devices primary function is that of a battery.
 `PNP0C0B` | **Fan**. A device that causes cooling when “on” (D0 device state).
-`PNP0C0C` | **Power Button Device******. A device controlled through an ACPI-aware driver that provides power button functionality. This device is only needed if the power button is not supported using the fixed register space.
+`PNP0C0C` | **Power Button Device**. A device controlled through an ACPI-aware driver that provides power button functionality. This device is only needed if the power button is not supported using the fixed register space.
 `PNP0C0D`| **Lid Device**. A device controlled through an ACPI-aware driver that provides lid status functionality. This device is only needed if the lid state is not supported using the fixed register space.
 `PNP0C0E`| **Sleep Button Device**. A device controlled through an ACPI-aware driver that provides power button functionality. This device is optional.
 `PNP0C0F`| **PCI Interrupt Link Device**. A device that allocates an interrupt connected to a PCI interrupt pin. See Section 6.2.13 for more details.
@@ -16,7 +16,7 @@ Plug and Play ID | Description
 `ACPI0001`| **SMBus 1.0 Host Controller.** An SMBus host controller (SMB-HC) compatible with the embedded controller-based SMB-HC interface (see Section 12.9), and implementing the SMBus 1.0 Specification.
 `ACPI0002`|Smart Battery Subsystem. The Smart battery Subsystem specified in Section 10, “Power Source Devices.”
 `ACPI0003`|**Power Source Device.** The Power Source device specified in Section 10, “Power Source Devices.” This can represent either an AC Adapter (on mobile platforms) or a fixed Power Supply.
-`ACPI0004`| **Module Device**. This device is a container object that acts as a bus node in a namespace. A Module Device without any of the `_CRS`, _PRS and `_SRS` methods behaves the same way as the Generic Container Devices (PNP0A05 or PNP0A06). If the Module Device contains a `_CRS` method, only these resources described in the `_CRS` are available for consumption by its child devices. Also, the Module Device can support `_PRS` and `_SRS` methods if `_CRS` is supported.
+`ACPI0004`| **Module Device**. This device is a container object that acts as a bus node in a namespace. A Module Device without any of the `_CRS`, `_PRS` and `_SRS` methods behaves the same way as the Generic Container Devices (PNP0A05 or PNP0A06). If the Module Device contains a `_CRS` method, only these resources described in the `_CRS` are available for consumption by its child devices. Also, the Module Device can support `_PRS` and `_SRS` methods if `_CRS` is supported.
 `ACPI0005`| **SMBus 2.0 Host Controller**. An SMBus host controller (SMB-HC compatible with the embedded controller-based SMB-HC interface (see Section 12.9), and implementing the SMBus 2.0 Specification.
 `ACPI0006`|**GPE Block Device**. This device allows a system designer to describe GPE blocks beyond the two that are described in the FADT.
 `ACPI0007`|**Processor Device**. This device provides an alternative to declaring processors using the processor ASL statement. See Section 8.4 for more details.
