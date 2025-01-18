@@ -1,5 +1,15 @@
 # CMOS Reset Fix
 
+- [About](#about)
+- [Method 1: Using a Kext and a Kernel Patch](#method-1-using-a-kext-and-a-kernel-patch)
+- [Method 2: Fixing the Real Time Clock via SSDT](#method-2-fixing-the-real-time-clock-via-ssdt)
+- [Instructions](#instructions)
+- [Patch: `SSDT-RTC0-NoFlags`](#patch-ssdt-rtc0-noflags)
+- [NOTES](#notes)
+
+---
+
+## About
 - Some machines will report a **"Boot Self Test Error"** when shutting down or rebooting, due to a CMOS Reset triggered by macOS.
 - When using Clover, checking `ACPI/DSDT/Fixes/FixRTC` will resolve this issue.
 - When using OpenCore, there are 2 Methods available – use either or.
@@ -8,7 +18,7 @@
 This is the official method suggested by the OpenCore developers.
 
 - Add [**RTCMemoryFixup.kext**](https://github.com/acidanthera/RTCMemoryFixup) to `EFI/OC/Kexts` and `config.plist`
-- Enable `Kernel\Patch` **__ZN11BCM5701Enet14getAdapterInfoEv** (copy it over from the `Sample.plist` included in the OpenCore package if it's missing.)
+- Enable `Kernel\Patch` for "**Disable RTC wake scheduling**" (copy it over from the `Sample.plist` included in the OpenCore package if it's missing.)
 - Save and reboot. 
 
 The problem should be gone, the next time you reboot or shutdown the system.

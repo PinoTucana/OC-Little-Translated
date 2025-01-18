@@ -1,5 +1,16 @@
 # Configuring Active State Power Management (ASPM)
 
+- [About ASPM](#about-aspm)
+  - [ASPM States](#aspm-states)
+  - [AOAC Devices and ASPM](#aoac-devices-and-aspm)
+- [Injecting ASPM operation mode](#injecting-aspm-operation-mode)
+  - [Method 1: Injecting ASPM mode via `DeviceProperties` (recommended):](#method-1-injecting-aspm-mode-via-deviceproperties-recommended)
+    - [Example 1: Changing the ASPM mode of an NVMe Disk](#example-1-changing-the-aspm-mode-of-an-nvme-disk)
+    - [Example 2: Changing the ASPM mode of a WiFi Card](#example-2-changing-the-aspm-mode-of-a-wifi-card)
+  - [Method 2: Injecting ASPM via SSDT](#method-2-injecting-aspm-via-ssdt)
+
+---
+
 ## About ASPM
 
 **Active State Power Management** (ASPM) is a power management technique that allows a computer to reduce the power consumption of its hardware components when they are not in use. It is used to extend the battery life of portable devices and to reduce power consumption in desktop and server systems.
@@ -21,6 +32,12 @@ ASPM supports a number of different power states, depending on the specific hard
 - **`L3`**: This is the deepest low-power state, in which the hardware component is powered off and is not able to perform any functions.
 
 Changing the ASPM operatio modes of PCI devices can resolve issues with third-party devices not being detected during boot. For example, Realtek's RTS525A SD Card Reader is only detected after changing its default state from `L0s` to `L1`.
+
+To check the default ASPM values of PCI devices, you can use the following GREP command (≤ macOS Sonoma):
+
+```terminal
+ioreg -l -p IODeviceTree | grep pci-aspm-default
+```
 
 ### AOAC Devices and ASPM
 

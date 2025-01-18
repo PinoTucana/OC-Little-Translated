@@ -21,7 +21,7 @@ Once the installation is completed you can reboot and the entry for booting Wind
 > If you want to use a seperate physical disk for installing Windows instead you just have to format the disk as FAT32 and continue with "Install Windows"
 
 ### Windows Installation
-1. Donwload [Windows_Install.zip](https://sourceforge.net/projects/windows-install/) from sourceforge and unpack it
+1. Download [Windows_Install.zip](https://sourceforge.net/projects/windows-install/) from sourceforge and unpack it
 2. Run the App
 3. Drag your Windows Installation ISO into the app's window
 4. The following Windows should be displayed:<br> ![Win10Config](https://github.com/5T33Z0/OC-Little-Translated/assets/76865553/b633cf25-ee19-4581-887c-42173a232a8f)
@@ -31,7 +31,7 @@ Once the installation is completed you can reboot and the entry for booting Wind
 8. Click on install and watch the progress.
 9. Once the installation is complete the app will mount your System's EFI and add the "Microsoft" folder to it.
 10. Reboot
-11. Windows should now be available from the Bootpicker. If it's not, add `\EFI\Microsoft\Boot\bootmgfw.efi` to `Misc/BlessOverride` to your config.plist:<br>![Bless](https://github.com/5T33Z0/OC-Little-Translated/assets/76865553/fdb65892-ccea-4e7d-90f4-c60742a0124a)
+11. Windows should now be available from the Bootpicker. If it's not, open your `config.plist`. Add `\EFI\Microsoft\Boot\bootmgfw.efi` to `Misc/BlessOverride`:<br>![Bless](https://github.com/5T33Z0/OC-Little-Translated/assets/76865553/fdb65892-ccea-4e7d-90f4-c60742a0124a)
 12. Save and Reboot
 13. Select Windows and the Installation starts. Once that's done, continue with Post-Install
 

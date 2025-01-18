@@ -1,6 +1,6 @@
 # A brief history of hackintoshing
 
-If we take the definition of a "Hackintosh" (or "Black Apple", as it's called in Asia) – a computer without the Apple logo running an operating system developed by Apple – then the world's first "Hackintosh" would have been born 24 years ago. 
+If we take the definition of a "Hackintosh" (or "Black Apple", as it's called in Asia) – a computer without the Apple logo running an operating system developed by Apple – then the world's first "Hackintosh" would have been born around 1996 – almost 30 years ago. 
 
 In 1996, Apple switched its Macintosh computers to IBM's PowerPC architecture. Gil Amelio, then Apple CEO, took the opportunity to sign up some of the same CPU and motherboard manufacturers as the Macintosh, such as Motorola, to license their PCs with Apple's Macintosh System 7 (known as Classic Mac OS 7).
 
@@ -146,7 +146,10 @@ That said, it took 4 years for Apple to go from *announcing* the switch to Intel
 
 **OpenCore 0.0.1** was released on **May 4, 2019**. If it only took two years for Clover to go from release to replacing Chameleon, then OpenCore will completely replace Clover next year. 
 
-In the previous sections we saw the many flaws of Chameleon so that its replacement by Clover was inevitable. But as of today, Clover has no significant drawbacks, OpenCore has no significant advantages over Clover that would make it obsolete. So both Clover and OpenCore will still co-exist for the foreseeable future. [The views about OpenCore shared in this paragraph are not those of 5T33Z0.]
+In the previous sections we saw the many flaws of Chameleon so that its replacement by Clover was inevitable. But as of today, Clover has no significant drawbacks, OpenCore has no significant advantages over Clover that would make it obsolete. So both Clover and OpenCore will still co-exist for the foreseeable future. 
+
+**EDIT**: Re-evaluating the relevance of OpenCore in 2024 [by 5T33Z0]
+It's the end of 2024, and Clover is pretty much obsolete. Over the last 4 years, OpenCore has become the de-facto standard for booting macOS on Wintel systems as well as on legacy Macs for booting newer versions of macOS!
 
 ## When will Apple abandon Intel's x86 architecture?
 

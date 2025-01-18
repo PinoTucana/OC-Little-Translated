@@ -35,16 +35,25 @@ For Ivy Bridge(-E) and older, you have to create an SSDT containing the power an
 
 ## Instructions
 - Open Terminal
-- Enter the following command to download the ssdtPRGen Script: `curl -o ~/ssdtPRGen.sh https://raw.githubusercontent.com/Piker-Alpha/ssdtPRGen.sh/Beta/ssdtPRGen.sh`
-- Make it executable: `chmod +x ~/ssdtPRGen.sh` 
-- Run the script: `sudo ~/ssdtPRGen.sh`
+- Enter the following command to download the ssdtPRGen Script:
+	```bash
+	curl -o ~/ssdtPRGen.sh https://raw.githubusercontent.com/Piker-Alpha/ssdtPRGen.sh/Beta/ssdtPRGen.sh
+	```
+- Make it executable: 
+	```bash
+	chmod +x ~/ssdtPRGen.sh
+	``` 
+- Run the script: 
+	```bash
+	sudo ~/ssdtPRGen.sh
+	```
 - The generated `SSDT.aml` will be located at `~/Library/ssdtPRGen`
-- Rename it to `SSDT-PM.aml` 
-- Copy it to `EFI/OC/ACPI` and list it in the `ACPI/Add` section of your config.plist
-- Under `ACPI/Delete`, disable `Delete CpuPm` and `Delete Cpu0Ist`
+- Rename it to `SSDT-PM.aml` (optional, but good practice)
+- Copy it to `EFI/OC/ACPI` and list it in the `ACPI/Add` section of your `config.plist`
+- Under `ACPI/Delete`, disable `Delete CpuPm` and `Delete Cpu0Ist` again
 - Save the config and reboot
 
-Monitor the behavior of the CPU in [**Intel Power Gadget**](https://www.intel.com/content/www/us/en/developer/articles/tool/power-gadget.html). Check if it is stepping though different frequencies. If the CPU is reacting to your usage of the system and if it reaches the defined lower and upper frequency limits, then CPU Power Management is working correctly.
+Monitor the behavior of the CPU in [**Intel Power Gadget**](https://www.insanelymac.com/forum/topic/357902-intel-power-gadget/). Check if it is stepping though different frequencies by performing different tasks like browsing the web and watching a YT video for example. If the CPU is reacting to your usage of the system and if it reaches the defined lower and upper frequency limits, then CPU Power Management is working correctly.
 
 ### Modifiers
 Besides simply generating the ssdt by running the script, you can add modifiers to the terminal command. Although the ssdtPRGen repo lists a bunch of [overrides](https://github.com/Piker-Alpha/ssdtPRGen.sh#help-information), it doesn't go into detail about how and when to use them.
@@ -121,7 +130,7 @@ In order to re-enable and use ACPI CPU Power Management in macOS Ventura and new
 	- `revpatch=sbvmm` &rarr; Enables `VMM-x86_64` Board-id which allows installing system updates on unsupported systems 
 	- `revblock=media` &rarr; Blocks `mediaanalysisd` service on Ventura+ which fixes issues on Metal 1 iGPUs. Firefox won't work without this.
 	- `ipc_control_port_options=0` &rarr; Fixes crashes with Electron apps like Discord
-	- `amfi_get_out_of_my_way=1` &rarr; Required to re-install legacy drivers (iGPU, GPU, etc.) with the OpenCore Patcher App in Post-Install.
+	- `amfi_get_out_of_my_way=1` (or `amfi=0x80`) &rarr; Required to re-install legacy drivers (iGPU, GPU, etc.) with the OpenCore Patcher App in Post-Install.
 - Save and reboot
 
 Once the 3 Kexts from OCLP are injected, ACPI Power Management will work in Ventura and you can use your `SSDT-PM` like before. For tests, enter in Terminal:
@@ -154,7 +163,7 @@ Instead of injecting the required kexts to re-enable legacy CPU Power Management
 - **ssdtPRGen** includes lists with settings for specific CPUs sorted by families. These can be found under `~/Library/ssdtPRGen/Data`. They are in .cfg format which can be viewed with TextEdit.
 - **ssdtPRGen** does not work with Lynnfield and other 1st Gen Intel Core CPUs
 - ⚠️ macOS Ventura users: you cannot install macOS Security Response Updates (RSR) on pre-Haswell systems. They will fail to install (more info [**here**](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/1019)).
-- Check the **Configuration.pdf** included in the OpenCorePkg for details about unlocking the MSR 0xE2 register (&rarr; Chapter 7.8: "AppleCpuPmCfgLock").
+- Check the **Configuration.pdf** included in the OpenCorePkg for details about unlocking the MSR 0xE2 register (&rarr; [Chapter 7.8](https://dortania.github.io/docs/release/Configuration.html#quirks-properties2): "AppleCpuPmCfgLock").
 
 ## Credits
 - Acidanthera for OpenCore Legacy Patcher, Kexts, Booter- and Kernel Patches

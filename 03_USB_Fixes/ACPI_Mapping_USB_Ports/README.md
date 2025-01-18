@@ -7,6 +7,7 @@
 **TABLE of CONTENTS**
 
 - [Background](#background)
+- [Benefits of mapping USB ports via ACPI vs. using a USB port kext](#benefits-of-mapping-usb-ports-via-acpi-vs-using-a-usb-port-kext)
 - [Approach](#approach)
 - [Patching requirments](#patching-requirments)
 - [Preparations](#preparations)
@@ -44,6 +45,16 @@ Although the `XHCIPortLimit` Quirk which lifts the USB port count limit from 15 
 > **Source**: https://github.com/corpnewt/USBMap/blob/master/Information.md#port-limit-patch
 
 Since USB port injector kexts are usually bound to the SMBIOS, the best and cleanest way to declare USB ports is via ACPI, since this method works independent of the macOS version and SMBIOS!
+
+## Benefits of mapping USB ports via ACPI vs. using a USB port kext 
+
+1. **Universal**: The port mapping is OS-agnostic and independent of the selected SMBIOS
+2. **Stability**: ACPI mappings are generally more stable across macOS updates.
+3. **Customization**: ACPI allows for more granular control over individual ports.
+4. **Compatibility**: ACPI method works with a wider range of USB controllers.
+5. **Performance**: Potentially better performance as it's closer to how Apple implements USB mapping.
+6. **Easier maintenance**: ACPI can be easier to maintain long-term compared to kexts.
+7. **Security**: Less likely to be affected by security changes in macOS that might impact kexts.
 
 ## Approach
 In order to build our own USB port map as SSDT, we will do the following:

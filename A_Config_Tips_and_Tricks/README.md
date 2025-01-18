@@ -2,7 +2,7 @@
 This section contains a small collection of useful configuration tips for OpenCore's `config.plist`.
 
 <details>
-<summary><b>TABLE of CONTENTS</b> (Click to reveal)</summary>
+<summary><b>TABLE of CONTENTS</b> (Click to reveal)</summary><br>
 	
 - [OpenCore Troubleshooting Quick Tips](#opencore-troubleshooting-quick-tips)
 	- [Troubleshooting Workflow](#troubleshooting-workflow)
@@ -342,9 +342,10 @@ Transferring the data correctly is important because otherwise you have to enter
 	| N/A in "Generic"             | Board-ID             |
 	| SystemSerialNumber           | Serial Number        |
 	| MLB                          | 1. Board Serial Number (under `SMBIOS`)</br>2. MLB (under `RtVariables`)|
-2. Next, tick the "Update Firmware Only" box.
-3. From the Dropdown Menu next to it to, select the Mac model you used for "ProductName". This updates other fields like BIOS and Firmware.
-4. Save config and reboot with Clover.
+	![OC](https://github.com/user-attachments/assets/8525a2a6-fc09-4447-9655-8d8f23f6736b) | ![Clover](https://github.com/user-attachments/assets/2fd0f0a2-72ac-42b6-b33a-bc14ca8352c8)
+3. Next, tick the "Update Firmware Only" box.
+4. From the Dropdown Menu next to it to, select the Mac model you used for "ProductName". This updates other fields like BIOS and Firmware.
+5. Save config and reboot with Clover.
 
 You know that the SMBIOS data has bee transferred correctly, if you don't have to re-enter your Apple-ID and password.
 

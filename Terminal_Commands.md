@@ -81,11 +81,15 @@ system_profiler SPHardwareDataType | grep 'Model Identifier'
 
 ## System Behavior
 
-### Disable Gatekeeper
+### Disable Gatekeeper (< macOS 15.0 beta 3)
 
 ```shell
 sudo spctl --master-disable
 ```
+
+> [!IMPORTANT]
+>
+> In macOS Sequoia, Gatekeeper can no longer be disabled via Terminal ([new method](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md))
 
 ### Disable DMG verification
 
@@ -285,7 +289,6 @@ defaults write -g ignore-devices -bool true
 
 &rarr; Check this [guide](https://mogutan.wordpress.com/2018/07/24/switch-bluetooth-setting-from-command-line-on-macos/) for instructions.
 
-
 ## Networking
 
 ### List MAC Addresses of Network Adapters
@@ -299,6 +302,28 @@ networksetup -listallhardwareports
 ```shell
 sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist
 sudo rm /Library/Preferences/SystemConfiguration/preferences.plist
+```
+
+### Disable TPC/IPv6 Protocol
+
+You really should disable IPv6 for security reasons, if you don't need it!
+
+List all Network devices:
+
+```shell
+sudo networksetup -listallnetworkservices 
+```
+Disable IPv6 for the following interfaces:
+
+```shell
+sudo networksetup -setv6off Ethernet
+sudo networksetup -setv6off Wi-Fi
+```
+To re-enable:
+
+```shell
+sudo networksetup -setv6automatic Wi-Fi
+sudo networksetup -setv6automatic Ethernet
 ```
 
 ## CPU-related

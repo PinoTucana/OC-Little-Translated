@@ -1,5 +1,5 @@
 # OpenCore Calculators
-This is my clumsy approach to calculate the correct values for the following bitmasks, using an Apple Numbers [Spreadsheet](https://github.com/5T33Z0/OC-Little-Translated/blob/main/B_OC_Calculators/OpenCoreCalcs.numbers?raw=true):
+This is my clumsy approach to calculate the correct values for the following bitmasks, using an Apple Numbers [Spreadsheet](https://github.com/5T33Z0/OC-Little-Translated/blob/main/B_OC_Calculators/OpenCoreCalcs.numbers):
 
 Bitmask | Description
 ------|-----------
@@ -11,9 +11,9 @@ Bitmask | Description
 `Darkwake` | For calculating a value for darkwake
 
 <details>
-<summary><strong>Screenshots</strong> (click to reveal)</summary>
+<summary><strong>Screenshots</strong> (click to reveal)</summary><br>
 
-![CSROC](https://user-images.githubusercontent.com/76865553/180944112-a6fbbf86-f613-4bf6-8076-a3845dc911e3.png)
+![csr](https://github.com/user-attachments/assets/a42ef173-aeeb-4d6f-8df1-f98002b91451)
 
 ![Bildschirmfoto 1](https://user-images.githubusercontent.com/76865553/134348928-ee19f359-c8fd-4e16-a99e-2cd652c9c64b.png)
 
@@ -35,6 +35,6 @@ Some of these calculators are also available as web applications:
 ## Tools
 If you are looking for an actual tool to calculate these things, check the following:
 
-- [**OC ToolBox**](https://github.com/webfalter/OCToolBox) – App for calculating csr-active-config etc.
-- [**BitmaskDecode**](https://github.com/corpnewt/BitmaskDecode) – Python script which can generate all of the mentioned bitmasks (except Darkwake).
+- [**OC ToolBox**](https://github.com/webfalter/OCToolBox) – App for calculating `csr-active-config`, etc.
+- [**BitmaskDecode**](https://github.com/corpnewt/BitmaskDecode) – Python script which can generate most of the mentioned bitmasks (except for Darkwake).
 - [**OCAuxiliaryTools**](https://github.com/ic005k/OCAuxiliaryTools) – OpenCore Configurator App which can generate `ScanPolicy`, `PickerAttributes` and `ExposeSensitiveData`

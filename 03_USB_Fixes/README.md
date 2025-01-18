@@ -1,8 +1,21 @@
 # Fixing USB issues
 
-> **Update** (2023-06-12): `XhciPortLimit` Quirk is working again since OpenCore 0.9.3 (commit [d52fc46](https://github.com/acidanthera/OpenCorePkg/commit/d52fc46ba650ce1afe00c354331a0657a533ef18)) for macOS Big Sur to Sonoma. Generating a USB port injector kext or mapping ports via ACPI is still highly recommended!
+- [Technical Background](#technical-background)
+  - [USB Specs](#usb-specs)
+  - [Removing the USB port limit and mapping USB ports](#removing-the-usb-port-limit-and-mapping-usb-ports)
+- [Method 1: Mapping USB Ports with Tools](#method-1-mapping-usb-ports-with-tools)
+  - [Option 1: Mapping USB ports in Microsoft Windows (recommended)](#option-1-mapping-usb-ports-in-microsoft-windows-recommended)
+  - [Option 2: Mapping ports in macOS](#option-2-mapping-ports-in-macos)
+    - [Using USBMap (recommended)](#using-usbmap-recommended)
+    - [Using Hackintool (outdated, inconvenient but prevalent)](#using-hackintool-outdated-inconvenient-but-prevalent)
+- [Method 2: Mapping USB Ports via ACPI](#method-2-mapping-usb-ports-via-acpi)
+- [Additional Resources](#additional-resources)
+
+---
 
 ## Technical Background
+
+> **Update** (2023-06-12): `XhciPortLimit` Quirk is working again since OpenCore 0.9.3 (commit [d52fc46](https://github.com/acidanthera/OpenCorePkg/commit/d52fc46ba650ce1afe00c354331a0657a533ef18)) for macOS Big Sur and newer. Generating a USB port injector kext or mapping ports via ACPI is still highly recommended!
 
 In macOS, the number of available USB ports is limited to 15. But since modern mainboards with `XHCI` (Extensible Host Controller Interface) controllers provide up to 26 ports (per controller), this becomes an issue when trying to get USB ports working properly in macOS. If the ports are not mapped correctly, internal and external USB devices will default to USB 2.0 speed or won't work at all. This is also relevant for Bluetooth since it's basically "wireless" USB 2.0 and therefore requires an internally assigned USB 2.0 port. The same applies to built-in cameras in Laptop computers.
 
@@ -32,7 +45,11 @@ The workaround is to lift the USB port limit and use additional tools to generat
 
 This method uses tools to create a codeless kext containing an info.plist with the desired USB port mapping which is injected into macOS during boot.
 
-### Option 1: Mapping port in Windows (recommended)
+> [!CAUTION]
+>
+> If your desktop mainboard has an LED-controller for driving RGB fans mapped via USB, you should disable these ports in macOS. There have been reports that these ports can cause shutdown/reboot issues under macOS, especially on ASRock boards ([A520m](https://github.com/5T33Z0/OC-Little-Translated/issues/121) and [B550M](https://www.reddit.com/r/hackintosh/comments/1flewc3/reboot_and_shutdown_problem_on_asrock_boards_with/) chipsets).
+
+### Option 1: Mapping USB ports in Microsoft Windows (recommended)
 
 - Boot into Windows from the BIOS boot menu (to bypass injections from OpenCore)
 - Download the Windows version of [**USBToolBox**](https://github.com/USBToolBox/tool/releases)
@@ -44,8 +61,8 @@ This method uses tools to create a codeless kext containing an info.plist with t
 > 
 > When using **USBToolBox** in macOS, there are 2 mapping options available which results in 2 different types of kexts:
 > 
-> - **Option 1** (default): Generates `UTBMap.kext` which has to be used in tandem with `USBToolBox.kext` to make the whole construct work. It has the advantage that the mapping is *SMBIOS-independent* so it can be used with any SMBIOS.
-> - **Option 2** (uses native Apple classes): Hit "C" to enter the settings and then "N" to enable native Apple classes (AppleUSBHostMergeProperties). This kext can only be used with the SMBIOS it was created with. If you decide to change your SMBIOS later, you have to adjust the `model` property inside the kext's info.plist – otherwise the mapping won't be applied!
+> - **Option 1** (default): Generates `UTBMap.kext` which has to be used in tandem with `USBToolBox.kext` to make the whole construct work. It has the advantage that the mapping is *SMBIOS-independent* so it can be used with *any* SMBIOS.
+> - **Option 2** (uses native Apple classes): Hit "C" to enter the settings and then "N" to enable native Apple classes (`AppleUSBHostMergeProperties`). This kext can only be used with the SMBIOS it was created with. If you decide to change your SMBIOS later, you have to adjust the `model` property inside the kext's `info.plist` – otherwise the mapping won't be applied!
 
 ### Option 2: Mapping ports in macOS
 Since the `XhciPortLimit` quirk has been fixed since OC 0.9.3, it can be used again to map USB ports in macOS 11.4 and newer!
@@ -96,8 +113,9 @@ Declaring USB ports is via ACPI is the "gold standard" since this method is OS-a
 
 You can follow [**this guide**](https://github.com/5T33Z0/OC-Little-Translated/tree/main/03_USB_Fixes/ACPI_Mapping_USB_Ports) to map your USB Ports via ACPI.
 
-## Other Resources
+## Additional Resources
 - [**USBInjectAll.kext**](https://github.com/daliansky/OS-X-USB-Inject-All/releases) by daliansky. Updated version with IOKit Personalities for the latest SMBIOSes and USB Controllers, including 400 to 700-series mainboards. Its `info.plist` contains about 9.300 lines of code while the original by Rehabman is from 2018 and "only" contains about 6.800!
 - [**Hackintool Port Mapping Guide**](https://chriswayg.gitbook.io/opencore-visual-beginners-guide/step-by-step/install-postinstall/usb-port-mapping) by chriswayg. A bit outdated but informative. Just ignore the stuff about `XhciPortLimit` Quirk and blocking ports via NVRAM!
 - [**USBWakeFixup**](https://github.com/osy/USBWakeFixup) – Kext and SSDT for fixing USB Wake issues
-- [**GUX-RyzenXHCIFix**](https://github.com/RattletraPM/GUX-RyzenXHCIFix) – GenericUSBXHCI kext variant for fixing USB 3 issues on some Ryzen APU-based hackintoshes running macOS 11.0 or newer.
+- [**GUX-RyzenXHCIFix**](https://github.com/RattletraPM/GUX-RyzenXHCIFix) – `GenericUSBXHCI.kext` variant for fixing USB 3 issues on some APU-based Ryzentoshes running macOS 11.0 or newer.
+- [**ACE: Apple Type-C Port Controller Secrets**](https://web.archive.org/web/20211023034503/https://blog.t8012.dev/ace-part-1/) (archived)

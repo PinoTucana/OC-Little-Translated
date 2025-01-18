@@ -1,8 +1,8 @@
 # Dropping ACPI Tables
-Sometimes ACPI Tables provided with your Firmware/BIOS might hinder some features or devices to work properly in macOS. Boot managers like Clover and OpenCore provide means to block certain tables from loading or to replace them. In order to do so, you need to know the Tables Signature, OEM Table ID and/or Table Length. Therefore, you need to extract ("dump") the ACPI tables from your BIOS/Firmware to analyze them.
 
 **TABLE of CONTENTS**
 
+- [About](#about)
 - [Preparations: Dumping the ACPI Tables](#preparations-dumping-the-acpi-tables)
 - [Method 1: Dropping Tables based on OEM Tabled ID](#method-1-dropping-tables-based-on-oem-tabled-id)
   - [Verifying that the table has been dropped](#verifying-that-the-table-has-been-dropped)
@@ -12,12 +12,17 @@ Sometimes ACPI Tables provided with your Firmware/BIOS might hinder some feature
     - [Verifying that the table has been dropped/deleted](#verifying-that-the-table-has-been-droppeddeleted)
   - [Example 2: replacing the `DMAR` table by a modified one](#example-2-replacing-the-dmar-table-by-a-modified-one)
     - [Verifying that the `DMAR` Table has been replaced](#verifying-that-the-dmar-table-has-been-replaced)
+- [NOTES](#notes)
+
+## About
+Sometimes ACPI Tables provided with your Firmware/BIOS might hinder some features or devices to work properly in macOS. Boot managers like Clover and OpenCore provide means to block certain tables from loading or to replace them. In order to do so, you need to know the Tables Signature, OEM Table ID and/or Table Length. Therefore, you need to extract ("dump") the ACPI tables from your BIOS/Firmware to analyze them.
 
 ## Preparations: Dumping the ACPI Tables
 There are various ways of dumping ACPI Tables from your Firmware/BIOS. The most common way is to use either Clover or OpenCore:
 
 - Using **Clover** (the easiest method): Hit `F4` in the Boot Menu. You don't even need a working configuration to do this. Just download the latest [**Release**](https://github.com/CloverHackyColor/CloverBootloader/releases) as a `.zip` file, extract it, put it on a FAT32 formatted USB flash drive and boot from it. The dumped ACPI Tables will be located in: `EFI/CLOVER/ACPI/origin`
-- Using **OpenCore** (requires the Debug version and a working config): enable `Misc/Debug/SysReport` Quirk. The ACPI Tables will be dumped during next boot.
+
+- Using **OpenCore** (req. the Debug version of OC): enable `Misc/Debug/SysReport` Quirk. The ACPI Tables will be dumped during next boot.
 
 ## Method 1: Dropping Tables based on OEM Tabled ID
 This method is used to drop tables such as SSDTs and others which have a *distinct* OEM Table ID in the header to describe them. In this example we drop `CpuPm`.
@@ -115,7 +120,7 @@ After rebooting, do the following:
 - Put it in the `EFI/OC/ACPI` and add it to your `config.plist`.
 - Save and reboot.
 
-This will disable the OEM DMAR table and inject the modified one instead but we need to check if it worked…
+This will disable the OEM DMAR table and inject the modified one instead but we need to check if it worked. If you are scared editing the DMAR table yourself, you can also use SSDTTime for this now, too.
 
 > [!IMPORTANT]
 >
@@ -129,4 +134,5 @@ This will disable the OEM DMAR table and inject the modified one instead but we 
 
 ## NOTES
 - OpenCore 0.9.2 introduced a new Kernel Quirk called [`DisableIoMapperMapping`](https://github.com/acidanthera/bugtracker/issues/2278#issuecomment-1542657515) which can be used to address new connectivity issues in macOS 13.3+ (if they weren't present before).
+- The presence of Reserved Memory Regions in the `DMAR` table may hinder `AppleVTD` service from being available in macOS, which is required for certain 3rd party WiFi/BT cards, as well as Intel-I225/I226 NICs using the [AppleIGC.kext](https://github.com/SongXiaoXi/AppleIGC) to work. Read this [write-up](https://github.com/Fu-Yuxuan-hub/Generic-EFI-for-H610-B660-Z690-B760-Z790/wiki/AppleVTD_English) to fix it.
 - You should only import ACPI tables with maciASL if you know that they are unmodified by OpenCore. Otherwise, dump the OEM ACPI Tables using the debug version of OpenCore and enabling the `SysReport` Quirk and work with those.
